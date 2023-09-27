@@ -1,5 +1,7 @@
 package br.com.example.demo.teste;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,19 +27,19 @@ public class usuarioController {
 	
 	@GetMapping("/getHerois")
 	public ResponseEntity<?> getHerois(){
-		return new ResponseEntity(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/alterarHeroi")
 	public ResponseEntity<?> alterarHeroi(@RequestBody  Heroi heroi, String id) {
 		heroiService.alterarHeroi(heroi);
-		return new ResponseEntity(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/deletarHeroi/{id}")
 	public ResponseEntity<?> deletarHeroi(@PathVariable("id") int id){
 		heroiService.deletaHeroi(id);
-		return new ResponseEntity(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 		
 	}
 }
