@@ -22,7 +22,7 @@ public class usuarioController {
 	@PostMapping("/adicionarHeroi")
 	public ResponseEntity<?> adicionaHeroi(@RequestBody Heroi heroi) {
 		heroiService.addHeroi(heroi);
-		return new ResponseEntity<>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/getHerois")
