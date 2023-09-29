@@ -1,6 +1,6 @@
 package br.com.example.demo.teste;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,32 +14,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class usuarioController {
+public class heroiController {
 
 	@Autowired
-	Heroi heroiService;
+	HeroiService heroiService;
 
 	@PostMapping("/adicionarHeroi")
 	public ResponseEntity<?> adicionaHeroi(@RequestBody Heroi heroi) {
 		heroiService.addHeroi(heroi);
-		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@GetMapping("/getHerois")
 	public ResponseEntity<?> getHerois(){
-		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@PutMapping("/alterarHeroi")
 	public ResponseEntity<?> alterarHeroi(@RequestBody  Heroi heroi, String id) {
 		heroiService.alterarHeroi(heroi);
-		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/deletarHeroi/{id}")
 	public ResponseEntity<?> deletarHeroi(@PathVariable("id") int id){
 		heroiService.deletaHeroi(id);
-		return new ResponseEntity<ArrayList<Heroi>>(heroiService.retornaHerois(), HttpStatus.ACCEPTED);
+		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 		
 	}
 }
