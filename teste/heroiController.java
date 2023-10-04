@@ -30,14 +30,14 @@ public class heroiController {
 		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
-	@PutMapping("/alterarHeroi")
-	public ResponseEntity<?> alterarHeroi(@RequestBody  Heroi heroi, String id) {
-		heroiService.alterarHeroi(heroi);
+	@PostMapping("/alterarHeroi/{id}")
+	public ResponseEntity<?> alterarHeroi(@PathVariable("id") Long id, @RequestBody Heroi heroi ) {
+		heroiService.alterarHeroi(heroi, id);
 		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 	}
 	
 	@DeleteMapping("/deletarHeroi/{id}")
-	public ResponseEntity<?> deletarHeroi(@PathVariable("id") int id){
+	public ResponseEntity<?> deletarHeroi(@PathVariable("id") Long id){
 		heroiService.deletaHeroi(id);
 		return new ResponseEntity<List<Heroi>> (heroiService.retornaHerois(), HttpStatus.ACCEPTED);
 		

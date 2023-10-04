@@ -19,20 +19,22 @@ public class HeroiService {
 		heroiRepository.save(h);
 	}
 
-	public void alterarHeroi(Heroi heroi) {
-		heroiRepository.delete(getHeroiById(heroi.getId()));
+	public void alterarHeroi(Heroi h, Long id) {
+		Heroi heroi = getHeroiById(id);
+		heroi.setNome(h.getNome());
+		heroi.setPoder(h.getPoder());
 		heroiRepository.save(heroi);
 	}
 
-	public void deletaHeroi(int id) {
+	public void deletaHeroi(Long id) {
 		Heroi heroi = getHeroiById(id);
 		heroiRepository.delete(heroi);
 	}
 
-	private Heroi getHeroiById(int id) {
+	private Heroi getHeroiById(Long id) {
 		Heroi heroiSelecionado = null;
 		for (Heroi heroi : heroiRepository.findAll()) {
-			if(heroi.getId() == id) {
+			if(heroi.getId().equals(id)) {
 				heroiSelecionado = heroi;
 			}
 		}

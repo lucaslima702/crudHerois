@@ -3,6 +3,8 @@ package br.com.example.demo.teste;
 import javax.persistence.Column;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,7 +14,8 @@ public class Heroi{
 	
 	@Id
 	@Column(name = "id")
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	
 	@Column(name = "poder")
 	private String poder;
@@ -36,11 +39,11 @@ public class Heroi{
 		this.poder = poder;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 }
