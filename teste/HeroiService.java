@@ -31,7 +31,7 @@ public class HeroiService {
 		heroiRepository.delete(heroi);
 	}
 
-	private Heroi getHeroiById(Long id) {
+	public Heroi getHeroiById(Long id) {
 		Heroi heroiSelecionado = null;
 		for (Heroi heroi : heroiRepository.findAll()) {
 			if(heroi.getId().equals(id)) {
