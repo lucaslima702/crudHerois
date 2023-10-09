@@ -1,4 +1,4 @@
-package br.com.example.demo.teste;
+package br.com.example.demo.heroi;
 
 import javax.persistence.Column;
 

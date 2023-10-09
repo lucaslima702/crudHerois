@@ -1,9 +1,12 @@
-package br.com.example.demo.teste;
+package br.com.example.demo.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.example.demo.heroi.Heroi;
+import br.com.example.demo.repository.HeroiRepository;
 
 @Service
 public class HeroiService {
